@@ -15,6 +15,8 @@ Vagrant::Config.run do |config|
     master_config.vm.forward_port 28015, 28015
     master_config.vm.forward_port 29015, 29015
 
+    master_config.vm.provision :chef_solo do |chef|
+    end
     master_config.vm.provision :shell do |sh|
       sh.inline = <<-EOF
         export DEBIAN_FRONTEND=noninteractive;
@@ -34,7 +36,7 @@ Vagrant::Config.run do |config|
   end
 
 
-  (1..11).each do |i|
+  [1,2].each do |i|
     config.vm.define "slave#{i}" do |slave_config|
       # Ubuntu 12.04, 64 bit
       slave_config.vm.box     = "precise64"

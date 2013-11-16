@@ -19,4 +19,3 @@ fi
 vagrant up master
 vagrant up slave1
 vagrant up slave2
-
