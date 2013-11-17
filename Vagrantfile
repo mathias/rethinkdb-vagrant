@@ -15,8 +15,11 @@ Vagrant::Config.run do |config|
     master_config.vm.forward_port 28015, 28015
     master_config.vm.forward_port 29015, 29015
 
-    master_config.vm.provision :chef_solo do |chef|
-    end
+    #master_config.vm.provision :chef_solo do |chef|
+      #chef.cookbooks_path = "cookbooks"
+      #chef.add_recipe "apt"
+    #end
+
     master_config.vm.provision :shell do |sh|
       sh.inline = <<-EOF
         export DEBIAN_FRONTEND=noninteractive;
